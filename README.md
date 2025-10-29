@@ -64,6 +64,7 @@ pip3 install setuptools
 
 ```
 cd AddrProbe/code
+python3 data_pre.py
 python3 main_train.py
 cp -r ../result/result_template ../result/result
 python3 main_test_seeded_prefix.py
