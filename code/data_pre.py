@@ -167,5 +167,5 @@ def data_pre(filename):
 
 
 if __name__ == "__main__":
-    folder = '../data/input/scan_output_responsive_2210.txt'  
+    folder = '../data/input/seeds_dataset.txt'  
     data_pre(folder)
