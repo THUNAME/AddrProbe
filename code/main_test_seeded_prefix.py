@@ -31,8 +31,10 @@ def get_match_model_cluster_distribution(prefix, df_all_test_prefix, df_id_prefi
     test_prefix = test_prefix_attr['prefix']
 
     test_prefix_org = test_prefix_attr['org_name']
-    mathch_model_org = df_id_prefix_as_attr[df_id_prefix_as_attr['org_name'] == test_prefix_org][['id', 'prefix']].values.tolist()
-
+    # mathch_model_org = df_id_prefix_as_attr[df_id_prefix_as_attr['org_name'] == test_prefix_org][['id', 'prefix']].values.tolist()
+    df_filter = df_id_prefix_as_attr[(df_id_prefix_as_attr['org_name'] == test_prefix_org) | (df_id_prefix_as_attr['prefix'] == test_prefix)][['id', 'prefix']].drop_duplicates()
+    match_model_org = df_filter.values.tolist()
+    
     sum_clu_dis = 0
     for model in mathch_model_org:
         cluster_distribution = prefix_cluster_distribution_dict[model[0]]
