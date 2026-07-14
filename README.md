@@ -74,7 +74,18 @@ python3 main_test_unseeded_prefix.py
 python3 sat_aliased_prefix.py
 ```
 
-If you want to change the default configuration, you can edit `DefaultConfig` in `AddrProbe/code/config.py`. Note that the first thing you need to do is to set the Zmap parameters in it, including the source IPv6 address and so on.
+#### Configuration Modification Instructions
+##### Default Configuration Entry
+Configuration file path: `AddrProbe/code/config.py`
+All global default parameters are defined in the `DefaultConfig` class. You may customize default values by modifying this class.
+
+##### Mandatory Pre-configuration Before Probing
+Prior to launching any probing tasks, you must complete all Zmap-related configurations first. The source IPv6 address is a required core parameter.
+
+##### Explanation of Threshold Parameter `knowledge_base_threshold`
+This threshold differentiates seeded prefixes and unseeded prefixes.
+- If this threshold is reduced: fewer seeded prefix samples will be used for model training.
+- Supporting adjustments: After lowering the threshold, you need to synchronously tune relevant training hyperparameters such as `eps_min_sample` and `batch_size`.
 
 
 ## Result
